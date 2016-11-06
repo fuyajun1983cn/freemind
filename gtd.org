@@ -1,0 +1,25 @@
+
+* Todo Items [0/2]
+  
+** ☛ TODO 完善中文翻译
+
+** ☛ TODO 添加双击Tab Header关闭当前Tab的行为
+
+* 代码分析记录
+
+** 如何添加一个菜单项
+   菜单的初始化是在类 =freemind.controller.MenuBar= 中进行的。 具体来
+   说，是在 =updateMenus= 方法中进行的。菜单根据功能初分成为不同的
+   *Category* ，以区分不同的功能。 下面的在 =updateMenus= 中添加的一小
+   段代码，增加了一个新的顶级菜单项 =help2= 
+   #+BEGIN_SRC java
+     menuHolder.addMenu(new JMenu("help2"), MENU_BAR_PREFIX + "help2/"
+                        + ".");
+     menuHolder.addAction(c.about, MENU_BAR_PREFIX + "help2/" + "about");
+     menuHolder.addAction(c.quit, MENU_BAR_PREFIX + "help2/" + "quit");   
+   #+END_SRC
+
+   一个菜单子项，具体挂在哪个顶级菜单的名下，是根据其 *Category* 来区
+   分的。
+
+   另外，顶级菜单项的 *Category* 必须以 "." 结尾。
